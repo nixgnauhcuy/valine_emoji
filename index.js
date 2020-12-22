@@ -7,8 +7,8 @@ for(let dir of dirs){
   if(fs.statSync(dir).isDirectory() && dir !== '.git'){
     let face = {}
     const files = fs.readdirSync(dir)
-    if(files.includes('face.json')){
-      faceJson = JSON.parse(fs.readFileSync(path.join(dir,'face.json')))
+    if(files.includes('valine.json')){
+      faceJson = JSON.parse(fs.readFileSync(path.join(dir,'valine.json')))
       for(let file of Object.keys(faceJson)){
         face[file] = `${dir}/${faceJson[file]}`
       }
@@ -20,4 +20,4 @@ for(let dir of dirs){
     faces = {...faces, ...face}
   }
 }
-fs.writeFileSync('face.json', JSON.stringify(faces, null, 4))
+fs.writeFileSync('valine.json', JSON.stringify(faces, null, 4))
